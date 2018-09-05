@@ -31,13 +31,9 @@ public class enemyDamage : MonoBehaviour
 	void OnTriggerStay2D(Collider2D enemyCollider) 
 	{
 		// checks if player is attacking
-		while (!timeFreeze.timeFrozen) 
-		{	
-			if (Input.GetButtonDown ("Fire3") && enemyCollider.gameObject.tag == "Player") 
-			{
-				// reduces enemy health by 1
-				enemyHealth--;
-			}
+		if (Input.GetButtonDown ("Fire3") && enemyCollider.gameObject.tag == "Player" && !timeFreeze.timeFrozen) {
+			// reduces enemy health by 1
+			enemyHealth--;
 		}
 	}
 }
