@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playermovement : MonoBehaviour {
+public class playermovement : MonoBehaviour 
+{
 
 
 	// initial variables
@@ -23,20 +24,24 @@ public class playermovement : MonoBehaviour {
 	public float jumpTime;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		playerRB = GetComponent<Rigidbody2D> ();
 	}
 
 	// FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
 		// Store the current horizontal input in the float moveHorizontal as well as vertical velocity in float verticalVelocity
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		verticalInput = Input.GetAxis ("Vertical");
 
 		// when time is frozen
-		if (timeFreeze.timeFrozen) {
+		if (timeFreeze.timeFrozen) 
+		{
 			// keeps track of vertical speed upon start of freeze
-			if (!timeFreezeInitialization){
+			if (!timeFreezeInitialization)
+			{
 				verticalVelocity = playerRB.velocity.y;
 				timeFreezeInitialization = true;
 			}
@@ -45,9 +50,11 @@ public class playermovement : MonoBehaviour {
 			playerRB.velocity = new Vector2(0, 0);
 
 		// when time isn't frozen
-		} else {
+		} else 
+		{
 			// resets time freeze initialization and turns gravity back on
-			if (timeFreezeInitialization) {
+			if (timeFreezeInitialization) 
+			{
 				// turns gravity back on
 				playerRB.gravityScale = 1;
 				playerRB.velocity = new Vector2 (moveHorizontal * speed, verticalVelocity);
@@ -55,25 +62,32 @@ public class playermovement : MonoBehaviour {
 				timeFreezeInitialization = false;
 			
 			// once time freeze intialization is reset
-			} else {
+			} 
+			else 
+			{
 				// sets movement speed in player
 				playerRB.velocity = new Vector2 (moveHorizontal * speed, playerRB.velocity.y);
 			}
 				
-			if (isHoldingJump){
+			if (isHoldingJump)
+			{
 				jumpTimer -= Time.deltaTime;
-				if (jumpTimer <= 0){
+				if (jumpTimer <= 0)
+				{
 					isHoldingJump = false;
 				}
 			}
 		}
 	}
 
-	void OnCollisionStay2D (Collision2D collision) {
-		if (verticalInput > 0 && (collision.gameObject.tag == "Floor" || isHoldingJump)){
+	void OnCollisionStay2D (Collision2D collision) 
+	{
+		if (verticalInput > 0 && (collision.gameObject.tag == "Floor" || isHoldingJump))
+		{
 			Vector2 jumpInput = new Vector2 (0, jumpStrength);
 			playerRB.AddForce(jumpInput);
-			if (!isHoldingJump) {
+			if (!isHoldingJump) 
+			{
 				isHoldingJump = true;
 				jumpTimer = jumpTime;
 			}
