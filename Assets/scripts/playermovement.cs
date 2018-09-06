@@ -37,20 +37,18 @@ public class playermovement : MonoBehaviour
 		verticalInput = Input.GetAxis ("Vertical");
 
 		// when time is frozen
-		if (timeFreeze.timeFrozen) 
+		if (timeFreeze.timeFrozen && !timeFreezeInitialization) 
 		{
 			// keeps track of vertical speed upon start of freeze
-			if (!timeFreezeInitialization)
-			{
-				verticalVelocity = playerRB.velocity.y;
-				timeFreezeInitialization = true;
-			}
+			verticalVelocity = playerRB.velocity.y;
+			timeFreezeInitialization = true;
 			// shuts off all movement
 			playerRB.gravityScale = 0;
 			playerRB.velocity = new Vector2(0, 0);
 
 		// when time isn't frozen
-		} else 
+		} 
+		else if (!timeFreeze.timeFrozen)
 		{
 			// resets time freeze initialization and turns gravity back on
 			if (timeFreezeInitialization) 
