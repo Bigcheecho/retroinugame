@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerDamage : MonoBehaviour {
 	// initial variables
 	public int playerStartingHealth;
-	private int playerHealth;
+	public static int playerHealth;
 
 	// makes the player alive, especially after they died
 	void lifeToPlayer()
@@ -26,7 +26,7 @@ public class playerDamage : MonoBehaviour {
 		if (playerHealth <= 0) 
 		{
 			// death sequence
-			gameObject.SetActive(false);
+			gameObject.SetActive (false);
 		}
 	}
 }

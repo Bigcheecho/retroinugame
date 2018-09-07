@@ -44,7 +44,7 @@ public class playermovement : MonoBehaviour
 			timeFreezeInitialization = true;
 			// shuts off all movement
 			playerRB.gravityScale = 0;
-			playerRB.velocity = new Vector2(0, 0);
+			playerRB.velocity = new Vector2 (0, 0);
 
 		// when time isn't frozen
 		} 
@@ -62,18 +62,14 @@ public class playermovement : MonoBehaviour
 			// once time freeze intialization is reset
 			} 
 			else 
-			{
 				// sets movement speed in player
 				playerRB.velocity = new Vector2 (moveHorizontal * speed, playerRB.velocity.y);
-			}
 				
 			if (isHoldingJump)
 			{
 				jumpTimer -= Time.deltaTime;
 				if (jumpTimer <= 0)
-				{
 					isHoldingJump = false;
-				}
 			}
 		}
 	}
@@ -83,7 +79,7 @@ public class playermovement : MonoBehaviour
 		if (verticalInput > 0 && (collision.gameObject.tag == "Floor" || isHoldingJump))
 		{
 			Vector2 jumpInput = new Vector2 (0, jumpStrength);
-			playerRB.AddForce(jumpInput);
+			playerRB.AddForce (jumpInput);
 			if (!isHoldingJump) 
 			{
 				isHoldingJump = true;

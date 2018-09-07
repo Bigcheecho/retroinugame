@@ -26,7 +26,7 @@ public class enemyTimeFreeze : MonoBehaviour {
 			timeFreezeInitialization = true;
 			// shuts off all movement
 			enemyRB.gravityScale = 0;
-			enemyRB.velocity = new Vector2(0, 0);
+			enemyRB.velocity = new Vector2 (0, 0);
 
 		// when time isn't frozen
 		}
@@ -39,4 +39,6 @@ public class enemyTimeFreeze : MonoBehaviour {
 			timeFreezeInitialization = false;
 		}
 	}
+
+
 }
