@@ -5,13 +5,13 @@ using UnityEngine;
 public class dumpsterScript : MonoBehaviour {
 	// initial public variables
 	public float enemySpawnTime;
-	public int enemySpawnLimit;
+	public byte enemySpawnLimit;
 
 	// initial private variables
 	private bool dumpsterActivated = false;
 	private bool dumpsterOpen = true;
 	private float dumpsterTimer;
-	private int enemiesSpawned = 0;
+	private byte enemiesSpawned = 0;
 
 
 	// Use this for initialization

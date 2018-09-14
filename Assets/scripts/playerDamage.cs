@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class playerDamage : MonoBehaviour {
 	// initial variables
-	public int playerStartingHealth;
-	public static int playerHealth;
+	public byte playerStartingHealth;
+	public static byte playerHealth;
 
 	// makes the player alive, especially after they died
 	void lifeToPlayer()

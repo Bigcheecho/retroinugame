@@ -6,8 +6,8 @@ public class enemyDamage : MonoBehaviour
 {
 
 	// initial variables
-	private int enemyHealth;
-	public int enemyStartingHealth;
+	private byte enemyHealth;
+	public byte enemyStartingHealth;
 
 	void lifeToEnemy()
 	{
