@@ -14,11 +14,11 @@ public class enemyDamage : MonoBehaviour
 		// sets player health to starting health
 		enemyHealth = enemyStartingHealth;
 		// sets the player to active if it hasn't already
-		gameObject.SetActive (true);
+		this.gameObject.SetActive (true);
 	}
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		lifeToEnemy ();
 	}
@@ -31,10 +31,23 @@ public class enemyDamage : MonoBehaviour
 			// death sequence
 			gameObject.SetActive (false);
 		}
-		if (Input.GetButtonDown ("Fire3") && enemyDetection.playerInTrigger && !timeFreeze.timeFrozen) {
+		if (Input.GetButtonDown ("Fire3") && playerInTrigger && !timeFreeze.timeFrozen) {
 			// reduces enemy health by 1
 			enemyHealth--;
 		}
 	}
 
+	// detects player within self
+	private bool playerInTrigger;
+
+	void OnTriggerEnter2D (Collider2D enemyCollider)
+	{
+		if (enemyCollider.gameObject.tag == "Player") 
+			playerInTrigger = true;
+	}
+	void OnTriggerExit2D (Collider2D enemyCollider)
+	{
+		if (enemyCollider.gameObject.tag == "Player") 
+			playerInTrigger = false;
+	}
 }

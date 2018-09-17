@@ -6,6 +6,8 @@ public class dumpsterScript : MonoBehaviour {
 	// initial public variables
 	public float enemySpawnTime;
 	public byte enemySpawnLimit;
+	public GameObject ribbonEnemy;
+	public GameObject[] nonRibbonEnemy;
 
 	// initial private variables
 	private bool dumpsterActivated = false;
@@ -32,13 +34,17 @@ public class dumpsterScript : MonoBehaviour {
 		else if (dumpsterActivated && dumpsterOpen && !timeFreeze.timeFrozen && enemiesSpawned < enemySpawnLimit)
 		{
 			// spawns ribbon enemy for tying dumpster
-			if (enemiesSpawned == 0)
-				dumpsterActivated = true; // to be replaced with ribbon enemy spawn
+			if (enemiesSpawned == 0) 
+			{
+				ribbonEnemy.SetActive (true);
+			}
 
 			// spawns normal enemy
-			else
-				dumpsterActivated = true; // to be replaced with non-ribbon enemy spawn
-
+			else 
+			{
+				nonRibbonEnemy [enemiesSpawned - 1].SetActive (true);
+			}
+			
 			// resets timer and keeps track of spawned enemies
 			enemiesSpawned++;
 			dumpsterTimer = enemySpawnTime;
@@ -46,7 +52,7 @@ public class dumpsterScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter2D (Collider dumpsterCollider) 
+	void OnTriggerEnter2D (Collider2D dumpsterCollider) 
 	{
 		// activates dumpstern when player gets near dumpster
 		if (dumpsterCollider.gameObject.tag == "Player") 
