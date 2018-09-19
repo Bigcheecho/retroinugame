@@ -39,6 +39,4 @@ public class enemyTimeFreeze : MonoBehaviour {
 			timeFreezeInitialization = false;
 		}
 	}
-
-
 }

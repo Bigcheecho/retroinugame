@@ -6,7 +6,7 @@ public class enemyDamage : MonoBehaviour
 {
 
 	// initial variables
-	private byte enemyHealth;
+	public byte enemyHealth;
 	public byte enemyStartingHealth;
 
 	void lifeToEnemy()
@@ -31,7 +31,7 @@ public class enemyDamage : MonoBehaviour
 			// death sequence
 			gameObject.SetActive (false);
 		}
-		if (Input.GetButtonDown ("Fire3") && playerInTrigger && !timeFreeze.timeFrozen) {
+		if (Input.GetButtonDown ("Fire3") && playerInTrigger && !timeFreeze.timeFrozen && playerAttackTime.playerCanAttack) {
 			// reduces enemy health by 1
 			enemyHealth--;
 		}
