@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61574448659122186}
   - component: {fileID: 114960305017709098}
   - component: {fileID: 114851729046475902}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: player-placeholder
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStartingHealth: 10
+  HealthBar: {fileID: 0}
 --- !u!114 &114960305017709098
 MonoBehaviour:
   m_ObjectHideFlags: 1

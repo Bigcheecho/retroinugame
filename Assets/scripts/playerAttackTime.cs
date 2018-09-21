@@ -15,13 +15,16 @@ public class playerAttackTime : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
+	// Update is called once per fixed time interval
 	void FixedUpdate () {
+		// checks if playerAttackTimer is greater than 0 and sets playerCanAttack to false
+		if (playerAttackTimer > 0)
+			playerCanAttack = false;
+
 		// when the player inputs and is capable of attacking
 		if (playerCanAttack && Input.GetButtonDown ("Fire3") && !timeFreeze.timeFrozen) 
 		{
 			playerAttackTimer = playerAttackDelay;
-			playerCanAttack = false;
 		} 
 		// when the player isn't capable of attacking and the timer isn't up
 		else if (!playerCanAttack && (playerAttackTimer > 0) && !timeFreeze.timeFrozen)

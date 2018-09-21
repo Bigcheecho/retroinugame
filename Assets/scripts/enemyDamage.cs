@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour 
 {
-
-	// initial variables
-	public byte enemyHealth;
+	// initial variables for enemy health
+	private byte enemyHealth;
 	public byte enemyStartingHealth;
 
+	// initial variables for enemy stunning
+	public bool enemyStunned = false;
+	public float enemyStunTime;
+	private float enemyStunTimer;
+
+	// makes the enemy alive
 	void lifeToEnemy()
 	{
-		// sets player health to starting health
+		// sets enemy health to starting health
 		enemyHealth = enemyStartingHealth;
-		// sets the player to active if it hasn't already
+		// resets enemyStunned values
+		enemyStunned = false;
+		enemyStunTimer = 0;
+		// sets the enemy to active if it hasn't already
 		this.gameObject.SetActive (true);
 	}
 
@@ -26,15 +34,29 @@ public class enemyDamage : MonoBehaviour
 	// Update is called once per fixed time interval
 	void FixedUpdate () 
 	{
+		// enemy health section
 		if(enemyHealth <= 0 && !timeFreeze.timeFrozen) 
 		{
 			// death sequence
 			gameObject.SetActive (false);
 		}
-		if (Input.GetButtonDown ("Fire3") && playerInTrigger && !timeFreeze.timeFrozen && playerAttackTime.playerCanAttack) {
-			// reduces enemy health by 1
+		if (Input.GetButtonDown ("Fire3") && playerInTrigger && !timeFreeze.timeFrozen && playerAttackTime.playerCanAttack) 
+		{
+			// reduces enemy health by 1 & stuns enemy
 			enemyHealth--;
+			enemyStunned = true;
+			enemyStunTimer = enemyStunTime;
 		}
+
+
+		// enemy stun section
+		// if enemy is stunned and timer still isn't up
+		if (enemyStunTimer > 0 && !timeFreeze.timeFrozen)
+			enemyStunTimer -= Time.deltaTime;
+
+		// if timer goes up after enemy's stun period
+		else if (enemyStunTimer <= 0 && !timeFreeze.timeFrozen)
+			enemyStunned = false;
 	}
 
 	// detects player within self
