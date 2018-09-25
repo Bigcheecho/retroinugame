@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 61525086703934176}
   - component: {fileID: 114452500516246012}
   - component: {fileID: 114948638249121640}
+  - component: {fileID: 114311229735393100}
   m_Layer: 8
   m_Name: enemy-placeholder
   m_TagString: Enemy
@@ -115,6 +116,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &114311229735393100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729992288616900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7e75629f1a048318861f59b3e00308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAttackDelay: 1
+  damageScript: {fileID: 114452500516246012}
 --- !u!114 &114452500516246012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,8 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504df016633bf4933a31db1694ba891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 0
   enemyStartingHealth: 3
+  enemyStunned: 0
+  enemyStunTime: 1
 --- !u!114 &114948638249121640
 MonoBehaviour:
   m_ObjectHideFlags: 1
